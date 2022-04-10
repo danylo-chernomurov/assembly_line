@@ -12,7 +12,7 @@ public class AssemblyLine {
             stations.forEach(x -> x.assemble(entity));
             return entity.build();
         } catch (QualityCheckException e) {
-            System.out.println("Log checks failed");
+            System.out.println("Quality checks failed");
             return produce(entity);
         }
     }

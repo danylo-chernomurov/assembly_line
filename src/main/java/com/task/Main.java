@@ -17,6 +17,7 @@ public class Main {
         stations.add( AssemblyCarEntity::paint);
         stations.add( AssemblyCarEntity::assemblyInterior);
         stations.add( AssemblyCarEntity::assemblyMechanic);
+        stations.add( AssemblyCarEntity::polish);
         stations.add( AssemblyCarEntity::qaCheck);
         return stations;
     }

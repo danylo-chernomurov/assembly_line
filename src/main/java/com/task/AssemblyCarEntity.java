@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class AssemblyCarEntity {
 
+    public static final int QA_CHECK_GATE = 20;
     private boolean isGoodQuality;
 
     public AssemblyCarEntity(AssemblyCarEntity assemblyCarEntity) {
@@ -37,9 +38,17 @@ public class AssemblyCarEntity {
         return this;
     }
 
+    public AssemblyCarEntity polish() {
+        if (isGoodQuality) {
+            throw new RuntimeException("Quality check should be last");
+        }
+        System.out.println("polish");
+        return this;
+    }
+
     public AssemblyCarEntity qaCheck() {
         var quality = new Random().nextInt(100);
-        if (quality < 80) {
+        if (quality < QA_CHECK_GATE) {
             isGoodQuality = false;
             throw new QualityCheckException("Quality check failed");
         }
