@@ -1,4 +1,4 @@
-package com.task;
+package com.task.assembly;
 
 public interface Station {
 

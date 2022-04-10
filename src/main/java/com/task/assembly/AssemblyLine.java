@@ -1,4 +1,7 @@
-package com.task;
+package com.task.assembly;
+
+import com.task.assembly.exception.QualityCheckException;
+import com.task.model.Car;
 
 import java.util.List;
 

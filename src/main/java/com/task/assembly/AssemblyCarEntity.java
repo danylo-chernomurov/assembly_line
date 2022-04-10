@@ -1,4 +1,8 @@
-package com.task;
+package com.task.assembly;
+
+import com.task.assembly.exception.QualityStationPositionException;
+import com.task.model.Car;
+import com.task.assembly.exception.QualityCheckException;
 
 import java.util.Random;
 
@@ -14,46 +18,33 @@ public class AssemblyCarEntity {
     public AssemblyCarEntity() {
     }
 
-    public AssemblyCarEntity paint() {
-        if (isGoodQuality) {
-            throw new RuntimeException("Quality check should be last");
-        }
+    public void paint() {
+        qaCheckPosition();
         System.out.println("paint");
-        return this;
     }
 
-    public AssemblyCarEntity assemblyMechanic() {
-        if (isGoodQuality) {
-            throw new RuntimeException("Quality check should be last");
-        }
+    public void assemblyMechanic() {
+        qaCheckPosition();
         System.out.println("assemblyMechanic");
-        return this;
     }
 
-    public AssemblyCarEntity assemblyInterior() {
-        if (isGoodQuality) {
-            throw new RuntimeException("Quality check should be last");
-        }
+    public void assemblyInterior() {
+        qaCheckPosition();
         System.out.println("assemblyInterior");
-        return this;
     }
 
-    public AssemblyCarEntity polish() {
-        if (isGoodQuality) {
-            throw new RuntimeException("Quality check should be last");
-        }
+    public void polish() {
+        qaCheckPosition();
         System.out.println("polish");
-        return this;
     }
 
-    public AssemblyCarEntity qaCheck() {
+    public void qaCheck() {
         var quality = new Random().nextInt(100);
         if (quality < QA_CHECK_GATE) {
             isGoodQuality = false;
             throw new QualityCheckException("Quality check failed");
         }
         isGoodQuality = true;
-        return this;
     }
 
     public Car build() {
@@ -62,5 +53,12 @@ public class AssemblyCarEntity {
         }
         return new Car();
     }
+
+    private void qaCheckPosition() {
+        if (isGoodQuality) {
+            throw new QualityStationPositionException("Quality check should be last. Reconfigure station position");
+        }
+    }
+
 
 }
